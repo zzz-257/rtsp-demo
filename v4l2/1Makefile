@@ -1,0 +1,18 @@
+PRO_NAME = libgv4l2.a
+PRO_ROOT = $(shell pwd)
+CROSS_COMPILE = #arm-linux-
+CC = $(CROSS_COMPILE)gcc
+AR = $(CROSS_COMPILE)ar
+INC :=
+CFLAGS += $(INC)
+LIB =
+SRC_DIR := $(PRO_ROOT)
+LIB_SRC = \
+	$(SRC_DIR)/v4l2.c
+
+obj = $(LIB_SRC:%.c=%.o)
+
+all:$(obj)
+	$(AR)  -rcs  $(PRO_NAME) $(obj)
+clean:
+	@rm $(obj)  $(PRO_NAME) -rf
